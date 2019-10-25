@@ -1,0 +1,26 @@
+* To get unifi pgp key
+** This works
+curl 'https://dl.ui.com/unifi/unifi-repo.gpg' > unifi-repo.gpg
+gpg unifi-repo.gpg
+gpg --armor --export unifi-dev@ubnt.com
+** This doesn't work
+curl 'https://dl.ui.com/unifi/unifi-repo.gpg' > unifi-repo.gpg
+gpg --enarmor unifi-repo.gpg
+less unifi-repo.gpg.asc
+* ssh to box using options from ssh-config
+ssh $(vagrant ssh-config | tail -n 10 | head -n 9 | sed 's/^ *//' | sed 's/ /=/' | sed 's/^/-o /' | xargs) 127.0.0.1
+* scp user-data to box
+scp $(vagrant ssh-config | tail -n 10 | head -n 9 | sed 's/^ *//' | sed 's/ /=/' | sed 's/^/-o /' | xargs) user-data 127.0.0.1:user-data
+* mounting cdrom to see what will actually be run
+mkdir cdrom
+sudo mount -o ro /dev/sr0 /home/vagrant/cdrom
+sudo mount -o ro,remount /dev/sr0 /home/vagrant/cdrom
+sudo umount cdrom
+* rerun cloud-init
+# You could do:
+#     rm -rf /var/lib/cloud
+# but cloud-init clean is cleaner
+sudo cloud-init clean
+sudo cloud-init init
+less /var/log/cloud-init-output.log
+sudo ls /etc/apt/sources.list.d/

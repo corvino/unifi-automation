@@ -1,0 +1,26 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+IMAGE_PATH = File.join(File.dirname(__FILE__), "no-cloud.iso")
+
+# Sure, just always remake this. It's fast, and forgetting
+# before an up is painful
+system("cd #{File.dirname(__FILE__)} && make")
+
+Vagrant.configure(2) do |config|
+    config.vm.box = "ubuntu/eoan64"
+    #config.vm.network :forwarded_port, guest: 8443, host: 8443
+    config.ssh.password = nil
+    config.vm.synced_folder ".", "/vagrant", disabled: true
+
+    config.vm.provider :virtualbox do |vb|
+        vb.linked_clone = true
+        vb.customize [
+            "storageattach", :id,
+            "--storagectl", "SCSI",
+            "--port", "1",
+            "--type", "dvddrive",
+            "--medium", IMAGE_PATH
+        ]
+    end
+end
