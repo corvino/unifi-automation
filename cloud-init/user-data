@@ -3,6 +3,14 @@
 debug:
   verbose: true
 
+users:
+  - name: vino
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: sudo
+    shell: /bin/bash
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDBOOjM4T6aR8So7EDbwxjS9SreKRkvHUrnp55Obwc4P2P5QcMtPVjEVoP7foM1TJ5SNpqWzKt6cxMTWFzP3UrhxhwxbWrnZsfDqW/MFv210WkH6WWsDDCLqAavY45cQ1Ud/MciCR13cXbl+876DvREInRcQAENFVJxZy//NUVBHSRzlu/jwznsDcwXTo+EZs7Dkf9FKV9qgiz29y1zhdf3nAx2Rs/d7tDeNYQga47mCKbdzD9EVZXEUrQrCbPgKFgwjb9Q2F3FL1OEnvQ29ACXIM03ieoYCOQyN38bQ4uaUY8rKNLAfRWROBREuDjMxjdxBb/Ql4fisi3CTlbCGL03Hf+OSW75A3TYB2QVKxbv1QaISNkWqsv25uXOs+HBRF9Mbt1w9fLqw8Qk49BMJngYnxSIaE9tKi88TqiLpxTM9ATySV+SQ7nXUzGc5E+r030bHV7Vt6HdyWCjsynELESwBDvIliOJCrjKe4Ki+MI0OWBUXZW4CP9E5hGPaEDLczbdqdmYfEO36IkqlXvsM8QGDHO1VMIbtWX6GqITVVKHl5YhUqjCVrEZfBII9XsOQAZxHufbRp2uFArSw8XG+kHytqpl0xVNxW17kvNAofjtAplIjj4Aip/d+SiEFsJgyM0bIxzGxHhDD/txbReMSAeMxYNW3PrxHudxmwhGlHyQ4Q== corvino@gmail.com
+
 apt:
   sources:
     100-ubnt-unifi:
@@ -51,14 +59,5 @@ packages:
   - apt-transport-https
   - openjdk-8-jre-headless
   - unifi
-
-# https://dustymabe.com/2015/08/03/installingstarting-systemd-services-using-cloud-init/
-# Not actually needed; unifi will start automatically on successful install.
-# You do need to wait for cloud-init to finish; ssh becomes available before apt-get
-# is run. You can always "tail -f /var/log/cloud-init.log"
-#runcmd:
-#  - [ systemctl, daemon-reload ]
-#  - [ systemctl, enable, unifi ]
-#  - [ systemctl, start, --no-block, unifi ]
 
 final_message: "cloud-init boot finished at ${TIMESTAMP}. cloud-init ${VERSION}. Datasource ${DATASOURCE}."
