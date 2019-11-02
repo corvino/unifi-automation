@@ -9,7 +9,10 @@ users:
     groups: sudo
     shell: /bin/bash
     ssh-authorized-keys:
+      # titan
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDBOOjM4T6aR8So7EDbwxjS9SreKRkvHUrnp55Obwc4P2P5QcMtPVjEVoP7foM1TJ5SNpqWzKt6cxMTWFzP3UrhxhwxbWrnZsfDqW/MFv210WkH6WWsDDCLqAavY45cQ1Ud/MciCR13cXbl+876DvREInRcQAENFVJxZy//NUVBHSRzlu/jwznsDcwXTo+EZs7Dkf9FKV9qgiz29y1zhdf3nAx2Rs/d7tDeNYQga47mCKbdzD9EVZXEUrQrCbPgKFgwjb9Q2F3FL1OEnvQ29ACXIM03ieoYCOQyN38bQ4uaUY8rKNLAfRWROBREuDjMxjdxBb/Ql4fisi3CTlbCGL03Hf+OSW75A3TYB2QVKxbv1QaISNkWqsv25uXOs+HBRF9Mbt1w9fLqw8Qk49BMJngYnxSIaE9tKi88TqiLpxTM9ATySV+SQ7nXUzGc5E+r030bHV7Vt6HdyWCjsynELESwBDvIliOJCrjKe4Ki+MI0OWBUXZW4CP9E5hGPaEDLczbdqdmYfEO36IkqlXvsM8QGDHO1VMIbtWX6GqITVVKHl5YhUqjCVrEZfBII9XsOQAZxHufbRp2uFArSw8XG+kHytqpl0xVNxW17kvNAofjtAplIjj4Aip/d+SiEFsJgyM0bIxzGxHhDD/txbReMSAeMxYNW3PrxHudxmwhGlHyQ4Q== corvino@gmail.com
+      # hermes
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCxIC1NwT76EW/oX7hfroZfk42a8UBfQBY/9gZzWGlqcthtr12JGm0DFhcWS9JUAeC91eBuefzdkXLbE1Cv1VDUF5kqTORYIHoXUIpbQ5O7h3Fd3Kgy8AwbgP63aeIYEIbO54XLjwBQ88oJG0SgUn9KQ1q/NoUn4vXHRCc54mPF5Fd/M6Qr88gvg1oqrLT53iqVfzr3tiwbhI/HpJrvHv3XPqP2vusgsIMWCy0TAzzucQVra84oq1K+nC5rDfAQmivPh7qKLQhaytf3DnxbD6Ga32r8cs8WeEFJBzPSkOd3ZFPSQmdYG/gDU7eKTbPgisTD4RfrNV73LEAEV5vozW0+6jOZMRGpsuZ/q/ZsMq7XQNnu68hPJBO2UOrJ7DjzKh9kNUa9mo28LuwGWR2KdOZ2QcW3kCQV0GrozDr7nAJ4wFtDmyIqrYGAa+9Z2TMDcol5piD/cYzN4oTO6X90UEYglit3kwF2Ly3hY6FR/at4/Y3YzTySm3UhnbnOYwertiLq4zSHnLqSvO+w++waPRDoL9h4tw0j93Hlkv32/uELRLu1S66+d4+Xn6sKS1UYFnoVlXrxoCrNvikd+iP0r/w+IUPTbJh5LmMjWhqFlkEruLTihirsfDC+lYVSqZY+IZ0/7U2O9vO2PNXRJAzVDBwphaSwusALuC2iPlzH9qpkcw== nathan@covino.com
 
 apt:
   sources:
@@ -30,6 +33,8 @@ packages:
   - mongodb-org
 
 runcmd:
-  - [ dpkg, -i, /boot/firmware/unifi_5.11.50-12745-1_all.deb ]
+  - [ dpkg, -i, /boot/firmware/unifi_5.12.22-12966-1_all.deb ]
+  - [ cloud-init-per, always, output lspci, lspci ]
+  - [ cloud-init-per, always, output ip addr show, ip, addr, show ]
 
 final_message: "cloud-init boot finished at ${TIMESTAMP}. cloud-init ${VERSION}. Datasource ${DATASOURCE}."
