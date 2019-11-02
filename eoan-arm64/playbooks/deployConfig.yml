@@ -1,0 +1,16 @@
+---
+- name: Deploy UniFi configuration to controller
+  hosts: all
+  tasks:
+    - name: Validate config.gateway.json
+      delegate_to: localhost
+      command: jsonlint ../config.gateway.json
+
+    - name: Copy config.gateway.json
+      become: yes
+      copy:
+        src: ../config.gateway.json
+        dest: /usr/lib/unifi/data/sites/default/
+        owner: unifi
+        group: unifi
+        mode: 0644

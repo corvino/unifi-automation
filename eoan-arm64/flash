@@ -715,7 +715,7 @@ fi
 
 # Specific for the unifi setup; this won't download from the repo.
 echo "Copying unifi_5.11.50-12745-1_all.deb to ${boot}/ ..."
-cp unifi_5.11.50-12745-1_all.deb "${boot}/"
+cp unifi_5.12.22-12966-1_all.deb "${boot}/"
 
 echo "Unmounting ${disk} ..."
 sleep 1

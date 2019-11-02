@@ -1,0 +1,34 @@
+{
+    "service": {
+        "dhcp-server": {
+            "shared-network-name": {
+                "net_LAN_eth1_192.168.1.0-24": {
+                    "subnet": {
+                        "192.168.1.0/24": {
+                            "static-mapping": {
+                                "proteus": {
+                                    "ip-address": "192.168.1.120",
+                                    "mac-address": "dc:a6:32:16:98:8a"
+                                },
+                                "zeus": {
+                                    "ip-address": "192.168.1.130",
+                                    "mac-address": "e8:06:88:cc:11:98"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "dns": {
+            "forwarding": {
+                "options": [
+                    "host-record=proteus.olympus.local,192.168.1.120",
+                    "host-record=proteus,192.168.1.120",
+                    "host-record=zeus.olympus.local,192.168.1.130",
+                    "host-record=zeus,192.168.1.130"
+                ]
+            }
+        }
+    }
+}
