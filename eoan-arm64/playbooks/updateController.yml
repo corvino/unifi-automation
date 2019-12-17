@@ -1,0 +1,15 @@
+---
+- name: Update UniFi controller package
+  hosts: all
+  vars:
+    unifi_package: unifi_5.12.35-12979-1_all.deb
+  tasks:
+    - name: Copy the UniFi controller package to controller box
+      become: yes
+      copy:
+        src: ../{{ unifi_package }}
+        dest: .
+        mode: 0644
+    - name: Install (upgrade) UniFi controller package
+      become: yes
+      apt: deb="{{ unifi_package }}"

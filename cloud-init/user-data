@@ -60,4 +60,8 @@ packages:
   - openjdk-8-jre-headless
   - unifi
 
+runcmd:
+  - [ lspci ]
+  - [ ip, addr, show ]
+
 final_message: "cloud-init boot finished at ${TIMESTAMP}. cloud-init ${VERSION}. Datasource ${DATASOURCE}."

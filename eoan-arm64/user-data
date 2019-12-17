@@ -33,7 +33,7 @@ packages:
   - mongodb-org
 
 runcmd:
-  - [ dpkg, -i, /boot/firmware/unifi_5.12.22-12966-1_all.deb ]
+  - [ dpkg, -i, /boot/firmware/unifi_5.12.35-12979-1_all.deb ]
   - [ cloud-init-per, always, output lspci, lspci ]
   - [ cloud-init-per, always, output ip addr show, ip, addr, show ]
 

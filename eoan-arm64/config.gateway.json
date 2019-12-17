@@ -10,9 +10,21 @@
                                     "ip-address": "192.168.1.120",
                                     "mac-address": "dc:a6:32:16:98:8a"
                                 },
+                                "medusa": {
+                                    "ip-address": "192.168.1.125",
+                                    "mac-address": "24:5e:be:02:9c:b2"
+                                },
                                 "zeus": {
                                     "ip-address": "192.168.1.130",
                                     "mac-address": "e8:06:88:cc:11:98"
+                                },
+                                "athena": {
+                                    "ip-address": "192.168.1.137",
+                                    "mac-address": "38:f9:d3:12:2f:73"
+                                },
+                                "hypnos": {
+                                    "ip-address": "192.168.1.132",
+                                    "mac-address": "00:23:df:85:d1:ae"
                                 }
                             }
                         }
@@ -23,10 +35,21 @@
         "dns": {
             "forwarding": {
                 "options": [
+                    "all-servers",
+                    "cname=unifi.olympus.local,unifi",
+                    "resolv-file=/etc/ppp/resolv.conf",
+                    "server=1.1.1.1",
+                    "host-record=unifi,192.168.1.120",
                     "host-record=proteus.olympus.local,192.168.1.120",
                     "host-record=proteus,192.168.1.120",
+                    "host-record=medusa.olympus.local,192.168.1.125",
+                    "host-record=medusa,192.168.1.125",
                     "host-record=zeus.olympus.local,192.168.1.130",
-                    "host-record=zeus,192.168.1.130"
+                    "host-record=zeus,192.168.1.130",
+                    "host-record=athena.olympus.local,192.168.1.137",
+                    "host-record=athena,192.168.1.137",
+                    "host-record=hypnos.olympus.local,192.168.1.132",
+                    "host-record=hypnos,192.168.1.132"
                 ]
             }
         }
